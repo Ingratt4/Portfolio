@@ -44,7 +44,7 @@ function App() {
             position: "relative",
             zIndex: 1,
             height: "100vh",
-            width: "100%", // Ensure full width
+            width: "100%",
             overflowY: "scroll",
             scrollSnapType: "y mandatory",
           }}

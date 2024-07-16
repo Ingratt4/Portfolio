@@ -43,7 +43,7 @@ const RightSection = styled(Box)`
       opacity: 1;
     }
   `} 1.5s ease-in-out forwards;
-  animation-delay: 4.5s; /* Adjust delay to match sequential fade-in */
+  animation-delay: 4.5s;
 `;
 
 const ContentWrapper = styled(Box)`
