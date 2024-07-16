@@ -1,37 +1,24 @@
 import linkedin from "../Images/linkedin-logo-bold.svg";
 import cv from "../Images/resume.svg";
 import github from "../Images/icons8-github-100.png";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { Container } from "@mui/material";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 const ImageContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  & img {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
-    transition: transform 0.3s, border-radius 0.3s;
-  }
-
-  & svg {
-    fill: #b9d6f2;
-  }
-
-  .img-overlay {
-    position: relative;
-    display: inline-block;
-  }
-
-  .img-overlay img {
-    display: block;
-    width: 100px;
-    height: 100px;
-    filter: brightness(0) saturate(100%) invert(89%) sepia(6%) saturate(3260%)
-      hue-rotate(157deg) brightness(96%) contrast(94%);
-  }
 `;
 
 const ImageButton = styled.a`
@@ -43,10 +30,23 @@ const ImageButton = styled.a`
   border: none;
   background-color: transparent;
   cursor: pointer;
-
   text-decoration: none;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: ${fadeIn} 1.5s ease-in-out forwards;
+
+  ${(props) =>
+    props.index !== undefined &&
+    css`
+      animation-delay: ${6 + props.index * 0.5}s;
+    `}
 
   img {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    transition: transform 0.3s, border-radius 0.3s;
+    filter: brightness(0) invert(1); /* Make the icons white */
     border-radius: ${(props) => {
       if (props.alt === "GitHub") return "80px";
       if (props.alt === "Resume") return "10px";
@@ -65,41 +65,31 @@ const ImageButton = styled.a`
 `;
 
 export default function ContactIconSection() {
+  const icons = [
+    { src: github, alt: "GitHub", href: "https://github.com/Ingratt4" },
+    { src: cv, alt: "Resume", href: "/path/to/resume" },
+    {
+      src: linkedin,
+      alt: "LinkedIn",
+      href: "https://ca.linkedin.com/in/cameron-ingratta-3b6496211",
+    },
+  ];
+
   return (
     <Container sx={{ display: "flex", justifyContent: "center" }}>
       <ImageContainer>
-        <ImageButton
-          href="https://github.com/Ingratt4"
-          target="_blank"
-          rel="noopener noreferrer"
-          alt="GitHub"
-        >
-          <div className="img-overlay">
-            <img src={github} alt="GitHub" />
-          </div>
-        </ImageButton>
-
-        <ImageButton
-          href="/path/to/resume"
-          target="_blank"
-          rel="noopener noreferrer"
-          alt="Resume"
-        >
-          <div className="img-overlay">
-            <img src={cv} alt="Resume" />
-          </div>
-        </ImageButton>
-
-        <ImageButton
-          href="https://ca.linkedin.com/in/cameron-ingratta-3b6496211"
-          target="_blank"
-          rel="noopener noreferrer"
-          alt="LinkedIn"
-        >
-          <div className="img-overlay">
-            <img src={linkedin} alt="LinkedIn" />
-          </div>
-        </ImageButton>
+        {icons.map((icon, index) => (
+          <ImageButton
+            key={icon.alt}
+            href={icon.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            alt={icon.alt}
+            index={index}
+          >
+            <img src={icon.src} alt={icon.alt} />
+          </ImageButton>
+        ))}
       </ImageContainer>
     </Container>
   );

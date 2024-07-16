@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
   box-sizing: border-box !important;
 }
 
@@ -15,7 +15,8 @@ body {
   display: table;
   width: 100%;
   height: 100%;
-  background-color: #003559;
+  background-color: #094c79;
+  background-image: url("./Images/bgimagenew.jpg");
   color: #000;
   line-height: 1.6;
   position: relative;

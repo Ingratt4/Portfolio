@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./App.css";
-import CombinedPage from "./Pages/CombinedPages"; // Adjust import to your file path
 import { Box } from "@mui/material";
+import MainPage from "./Components/MainPage";
 
 const theme = createTheme({
   palette: {
@@ -12,7 +12,7 @@ const theme = createTheme({
   typography: {
     fontFamily: "inter",
     allVariants: {
-      color: "#B9D6F2",
+      color: "white",
     },
   },
   components: {
@@ -52,7 +52,7 @@ function App() {
           <Box
             sx={{ height: "100vh", scrollSnapAlign: "start", width: "100%" }}
           >
-            <CombinedPage />
+            <MainPage />
           </Box>
         </Box>
       </Box>
