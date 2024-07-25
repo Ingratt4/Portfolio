@@ -4,6 +4,11 @@ import github from "../Images/icons8-github-100.png";
 import styled, { keyframes, css } from "styled-components";
 import { Container } from "@mui/material";
 
+interface ImageButtonProps {
+  index: number;
+  alt: string;
+}
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -21,7 +26,7 @@ const ImageContainer = styled.div`
   justify-content: center;
 `;
 
-const ImageButton = styled.a`
+const ImageButton = styled.a<ImageButtonProps>`
   width: 120px;
   height: 120px;
   display: flex;

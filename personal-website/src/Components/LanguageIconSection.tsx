@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "@mui/material";
 import styled, { keyframes, css } from "styled-components";
 import springboot from "../Images/spring.svg";
