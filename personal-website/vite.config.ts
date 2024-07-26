@@ -1,10 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  base: "/Personal-Website/", // Ensure this matches your GitHub Pages project
   plugins: [react()],
   build: {
-    outDir: "dist",
+    outDir: "build",
+    rollupOptions: {
+      input: "index.html", // Ensure the correct entry point
+      output: {
+        assetFileNames: "assets/[name].[hash][extname]",
+        chunkFileNames: "assets/[name].[hash].js",
+        entryFileNames: "assets/[name].[hash].js",
+      },
+    },
   },
 });
